@@ -99,18 +99,18 @@ run_backup() {
         fi
     fi
 
-    log "START: Backup of /home/dk"
+    log "START: Backup of $HOME"
 
     local rc=0
     if [[ "$foreground" == "true" ]]; then
-        restic backup /home/dk \
-            --exclude='/home/dk/.cache' \
-            --exclude='/home/dk/.vscode-server' \
-            --exclude='/home/dk/.nvm' \
-            --exclude='/home/dk/.local/share/claude' \
-            --exclude='/home/dk/.local/share/mise' \
-            --exclude='/home/dk/.local/share/containers' \
-            --exclude='/home/dk/go' \
+        restic backup "$HOME" \
+            --exclude="$HOME/.cache" \
+            --exclude="$HOME/.vscode-server" \
+            --exclude="$HOME/.nvm" \
+            --exclude="$HOME/.local/share/claude" \
+            --exclude="$HOME/.local/share/mise" \
+            --exclude="$HOME/.local/share/containers" \
+            --exclude="$HOME/go" \
             --exclude='**/node_modules' \
             --exclude='**/__pycache__' \
             --exclude='**/.pytest_cache' \
@@ -128,14 +128,14 @@ run_backup() {
             --pack-size 64 \
             2>&1 | tee -a "$LOG_FILE" || rc=$?
     else
-        restic backup /home/dk \
-            --exclude='/home/dk/.cache' \
-            --exclude='/home/dk/.vscode-server' \
-            --exclude='/home/dk/.nvm' \
-            --exclude='/home/dk/.local/share/claude' \
-            --exclude='/home/dk/.local/share/mise' \
-            --exclude='/home/dk/.local/share/containers' \
-            --exclude='/home/dk/go' \
+        restic backup "$HOME" \
+            --exclude="$HOME/.cache" \
+            --exclude="$HOME/.vscode-server" \
+            --exclude="$HOME/.nvm" \
+            --exclude="$HOME/.local/share/claude" \
+            --exclude="$HOME/.local/share/mise" \
+            --exclude="$HOME/.local/share/containers" \
+            --exclude="$HOME/go" \
             --exclude='**/node_modules' \
             --exclude='**/__pycache__' \
             --exclude='**/.pytest_cache' \

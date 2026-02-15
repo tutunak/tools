@@ -2,7 +2,7 @@
 
 ## Project overview
 
-WSL restic backup script. Automatically backs up `/home/dk` to a restic repository at `/mnt/e/backups/backrest/` via a background process triggered on zsh startup.
+WSL restic backup script. Automatically backs up `$HOME` to a local restic repository via a background process triggered on zsh startup.
 
 ## Key files
 
@@ -16,7 +16,7 @@ Single bash script with three modes:
 - `--now`: foreground mode, skips cooldown, streams output
 - `--status`: displays last backup time and log tail
 
-Credentials are sourced from `~/.secret/restic/env`. The script checks for drive availability before running and exits cleanly if `/mnt/e` is not mounted.
+Credentials are sourced from `~/.secret/restic/env`. The script checks for repository availability before running and exits cleanly if the target drive is not mounted.
 
 ## Conventions
 

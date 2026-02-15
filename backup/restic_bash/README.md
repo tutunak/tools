@@ -6,7 +6,7 @@ Automatic background backup of the WSL home directory to a local restic reposito
 
 - Every new zsh session triggers a background backup (via `.zshrc`)
 - A 1-hour cooldown prevents redundant runs
-- Backups target `/mnt/e/backups/backrest/` (restic repo)
+- Backups target a local restic repository (path configured in env file)
 - Pack size is set to 64 MiB
 - Snapshots are tagged `wsl2-auto`
 
@@ -29,8 +29,8 @@ chmod 600 ~/.secret/restic/password
 
 # Create env file
 cat > ~/.secret/restic/env << 'EOF'
-export RESTIC_REPOSITORY="/mnt/e/backups/backrest"
-export RESTIC_PASSWORD_FILE="/home/dk/.secret/restic/password"
+export RESTIC_REPOSITORY="/path/to/your/restic/repo"
+export RESTIC_PASSWORD_FILE="$HOME/.secret/restic/password"
 EOF
 chmod 600 ~/.secret/restic/env
 ```
